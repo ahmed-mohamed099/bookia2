@@ -5,6 +5,7 @@ import 'package:bookia/features/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/features/home/presentation/cubit/home_state.dart';
 import 'package:bookia/features/home/presentation/widgets/home_slider.dart';
 import 'package:bookia/features/home/presentation/widgets/product_card.dart';
+import 'package:bookia/features/search/presentation/screens/search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,7 +23,15 @@ class HomeScreen extends StatelessWidget {
             SizedBox(width: 6.w),
             Text('Bookia', style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold)),
           ]),
-          actions: [IconButton(icon: const Icon(Icons.search), onPressed: () {})],
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const SearchScreen()),
+              ),
+            ),
+          ],
         ),
         body: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
