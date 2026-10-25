@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'core/widgets/auth_widgets.dart';
-import 'otp_screen.dart';
+import 'package:bookia/core/widgets/auth_widgets.dart';
+import 'package:bookia/features/auth/presentation/screens/otp_screen.dart';
 
 class ForgotScreen extends StatefulWidget {
   const ForgotScreen({super.key});
@@ -15,7 +15,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
   void _send() {
     final email = _email.text.trim();
     if (!email.contains('@')) {
-      showError(context, 'إيميل غير صحيح');
+      showError(context, 'Invalid email');
       return;
     }
     Navigator.push(context, MaterialPageRoute(builder: (_) => OtpScreen(email: email)));

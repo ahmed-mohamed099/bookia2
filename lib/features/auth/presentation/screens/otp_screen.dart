@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'core/widgets/auth_widgets.dart';
-import 'new_password_screen.dart';
+import 'package:bookia/core/widgets/auth_widgets.dart';
+import 'package:bookia/features/auth/presentation/screens/new_password_screen.dart';
 
 class OtpScreen extends StatefulWidget {
   final String email;
@@ -18,7 +18,7 @@ class _OtpScreenState extends State<OtpScreen> {
 
   void _verify() {
     if (_code.length < 6) {
-      showError(context, 'اكتب الكود كامل');
+      showError(context, 'Enter the full code');
       return;
     }
     Navigator.push(context, MaterialPageRoute(builder: (_) => NewPasswordScreen(code: _code)));

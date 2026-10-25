@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'core/widgets/auth_widgets.dart';
-import 'password_changed_screen.dart';
+import 'package:bookia/core/widgets/auth_widgets.dart';
+import 'package:bookia/features/auth/presentation/screens/password_changed_screen.dart';
 
 class NewPasswordScreen extends StatefulWidget {
   final String code;
@@ -16,11 +16,11 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
 
   void _reset() {
     if (_pass.text.length < 8) {
-      showError(context, 'الباسورد على الأقل 8 حروف');
+      showError(context, 'Password must be at least 8 characters');
       return;
     }
     if (_pass.text != _confirm.text) {
-      showError(context, 'الباسورد مش متطابق');
+      showError(context, 'Passwords do not match');
       return;
     }
     Navigator.pushAndRemoveUntil(context,

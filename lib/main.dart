@@ -1,6 +1,6 @@
-import 'package:bookia/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:bookia/features/welcome/presentation/screens/welcome_screen.dart';
 
 void main() {
   runApp(const BookiaApp());

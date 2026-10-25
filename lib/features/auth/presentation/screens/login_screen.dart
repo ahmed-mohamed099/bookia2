@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:bookia/core/widgets/auth_widgets.dart';
+import 'package:bookia/features/auth/data/repo/auth_api.dart';
+import 'package:bookia/features/auth/presentation/screens/register_screen.dart';
+import 'package:bookia/features/auth/presentation/screens/forgot_screen.dart';
 import 'package:bookia/features/layout/main_layout.dart';
-import 'auth_api.dart';
-import 'core/widgets/auth_widgets.dart';
-import 'register_screen.dart';
-import 'forgot_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:bookia/auth_api.dart';
-import 'package:bookia/welcome_screen.dart';
+import 'package:bookia/features/auth/data/repo/auth_api.dart';
+import 'package:bookia/features/welcome/presentation/screens/welcome_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

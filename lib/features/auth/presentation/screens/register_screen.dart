@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'auth_api.dart';
-import 'core/widgets/auth_widgets.dart';
-import 'login_screen.dart';
+import 'package:bookia/core/widgets/auth_widgets.dart';
+import 'package:bookia/features/auth/data/repo/auth_api.dart';
+import 'package:bookia/features/auth/presentation/screens/login_screen.dart';
+import 'package:bookia/features/layout/main_layout.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -31,7 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       showError(context, error);
       return;
     }
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('تم إنشاء الحساب')));
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const MainLayout()), (r) => false);
   }
 
   @override
