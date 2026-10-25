@@ -1,17 +1,4 @@
-# bookia
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="359" height="731" alt="Screenshot 2026-10-17 203531" src="https://github.com/user-attachments/assets/77e574ae-29d3-4bd9-8e07-e8c3c9ad8f41" />
+<img width="388" height="748" alt="Screenshot 2026-10-17 202855" src="https://github.com/user-attachments/assets/367d4cba-2dee-4940-be38-204fa88153e3" />
+<img width="408" height="757" alt="Screenshot 2026-10-17 202842" src="https://github.com/user-attachments/assets/7161836e-58e7-4e56-9590-b7dd67830786" />
+<img width="391" height="746" alt="Screenshot 2026-10-17 202827" src="https://github.com/user-attachments/assets/3323ffe8-dd88-4560-837e-c2f84ff78da1" />
