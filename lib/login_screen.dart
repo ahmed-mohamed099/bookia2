@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:bookia/features/home/presentation/screens/home_screen.dart';
+import 'package:bookia/features/layout/main_layout.dart';
 import 'auth_api.dart';
 import 'core/widgets/auth_widgets.dart';
 import 'register_screen.dart';
@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
       showError(context, error);
       return;
     }
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const HomeScreen()), (r) => false);
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const MainLayout()), (r) => false);
   }
 
   @override
