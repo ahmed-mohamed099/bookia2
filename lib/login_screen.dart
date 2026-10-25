@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:bookia/features/home/presentation/screens/home_screen.dart';
 import 'auth_api.dart';
-import 'auth_widgets.dart';
+import 'core/widgets/auth_widgets.dart';
 import 'register_screen.dart';
-import 'main_screen.dart';
 import 'forgot_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -18,16 +18,17 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _loading = false;
 
   void _go(Widget page) => Navigator.push(context, MaterialPageRoute(builder: (_) => page));
-  void _soon() => ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('قريبًا')));
 
   Future<void> _login() async {
-    if (!_email.text.contains('@')) return showError(context, 'إيميل غير صحيح');
     setState(() => _loading = true);
     final error = await AuthApi.login(email: _email.text.trim(), password: _pass.text);
     if (!mounted) return;
     setState(() => _loading = false);
-    if (error != null) return showError(context, error);
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const MainScreen()), (r) => false);
+    if (error != null) {
+      showError(context, error);
+      return;
+    }
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const HomeScreen()), (r) => false);
   }
 
   @override
@@ -46,19 +47,17 @@ class _LoginScreenState extends State<LoginScreen> {
             AuthField(controller: _email, hint: 'Enter your email'),
             SizedBox(height: 15.h),
             AuthField(controller: _pass, hint: 'Enter your password', isPassword: true),
-            Align(alignment: Alignment.centerRight,
-                child: TextButton(onPressed: () => _go(const ForgotScreen()), child: const Text('Forgot Password?'))),
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton(onPressed: () => _go(const ForgotScreen()), child: const Text('Forgot Password?')),
+            ),
             SizedBox(height: 16.h),
             GoldButton(text: 'Login', loading: _loading, onPressed: _login),
-            SizedBox(height: 30.h),
-            Center(child: Text('Or', style: TextStyle(color: kHint, fontSize: 14.sp))),
-            SizedBox(height: 20.h),
-            SocialButton(icon: const Text('G', style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)), text: 'Sign in with Google', onTap: _soon),
-            SizedBox(height: 15.h),
-            SocialButton(icon: const Icon(Icons.apple), text: 'Sign in with Apple', onTap: _soon),
             SizedBox(height: 40.h),
-            Center(child: TextButton(onPressed: () => _go(const RegisterScreen()),
-                child: const Text("Don't have an account? Register Now", style: TextStyle(color: kGold)))),
+            Center(child: TextButton(
+              onPressed: () => _go(const RegisterScreen()),
+              child: const Text("Don't have an account? Register Now", style: TextStyle(color: kGold)),
+            )),
           ]),
         ),
       ),

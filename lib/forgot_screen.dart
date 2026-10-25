@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'auth_api.dart';
-import 'auth_widgets.dart';
+import 'core/widgets/auth_widgets.dart';
 import 'otp_screen.dart';
 
 class ForgotScreen extends StatefulWidget {
@@ -12,16 +11,13 @@ class ForgotScreen extends StatefulWidget {
 
 class _ForgotScreenState extends State<ForgotScreen> {
   final _email = TextEditingController();
-  bool _loading = false;
 
-  Future<void> _send() async {
+  void _send() {
     final email = _email.text.trim();
-    if (!email.contains('@')) return showError(context, 'إيميل غير صحيح');
-    setState(() => _loading = true);
-    final error = await AuthApi.forgotPassword(email);
-    if (!mounted) return;
-    setState(() => _loading = false);
-    if (error != null) return showError(context, error);
+    if (!email.contains('@')) {
+      showError(context, 'إيميل غير صحيح');
+      return;
+    }
     Navigator.push(context, MaterialPageRoute(builder: (_) => OtpScreen(email: email)));
   }
 
@@ -43,7 +39,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
             SizedBox(height: 32.h),
             AuthField(controller: _email, hint: 'Enter your email'),
             SizedBox(height: 38.h),
-            GoldButton(text: 'Send Code', loading: _loading, onPressed: _send),
+            GoldButton(text: 'Send Code', onPressed: _send),
           ]),
         ),
       ),

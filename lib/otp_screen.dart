@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'auth_api.dart';
-import 'auth_widgets.dart';
+import 'core/widgets/auth_widgets.dart';
 import 'new_password_screen.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -15,16 +14,13 @@ class OtpScreen extends StatefulWidget {
 class _OtpScreenState extends State<OtpScreen> {
   final _c = List.generate(6, (_) => TextEditingController());
   final _f = List.generate(6, (_) => FocusNode());
-  bool _loading = false;
   String get _code => _c.map((e) => e.text).join();
 
-  Future<void> _verify() async {
-    if (_code.length < 6) return showError(context, 'اكتب الكود كامل');
-    setState(() => _loading = true);
-    final error = await AuthApi.checkCode(widget.email, _code);
-    if (!mounted) return;
-    setState(() => _loading = false);
-    if (error != null) return showError(context, error);
+  void _verify() {
+    if (_code.length < 6) {
+      showError(context, 'اكتب الكود كامل');
+      return;
+    }
     Navigator.push(context, MaterialPageRoute(builder: (_) => NewPasswordScreen(code: _code)));
   }
 
@@ -63,7 +59,7 @@ class _OtpScreenState extends State<OtpScreen> {
             SizedBox(height: 32.h),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: List.generate(6, _box)),
             SizedBox(height: 38.h),
-            GoldButton(text: 'Verify', loading: _loading, onPressed: _verify),
+            GoldButton(text: 'Verify', onPressed: _verify),
           ]),
         ),
       ),
