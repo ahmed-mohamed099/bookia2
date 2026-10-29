@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:bookia/features/cart/presentation/widgets/buy_button.dart';
 import 'package:bookia/features/home/data/models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
@@ -37,14 +38,7 @@ class ProductCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('${product.priceAfterDiscount} EGP', style: TextStyle(fontSize: 13.sp)),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 6.h),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF2F2F2F),
-                  borderRadius: BorderRadius.circular(4.r),
-                ),
-                child: Text('Buy', style: TextStyle(color: Colors.white, fontSize: 12.sp)),
-              ),
+              BuyButton(productId: product.id),
             ],
           ),
         ],
